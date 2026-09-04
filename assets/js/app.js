@@ -24,7 +24,118 @@ document.addEventListener("DOMContentLoaded", () => {
     initExternalLinks();
 
 });
+/* ============================================================
+   THEME SYSTEM
+   ============================================================ */
 
+function initTheme() {
+
+    const root =
+        document.documentElement;
+
+
+    const buttons =
+        document.querySelectorAll(
+            "[data-theme-option]"
+        );
+
+
+    if (!buttons.length) {
+        return;
+    }
+
+
+    const savedTheme =
+        localStorage.getItem(
+            "gg-theme"
+        );
+
+
+    const systemPrefersLight =
+        window.matchMedia &&
+        window.matchMedia(
+            "(prefers-color-scheme: light)"
+        ).matches;
+
+
+    const initialTheme =
+        savedTheme
+        ||
+        (
+            systemPrefersLight
+                ? "light"
+                : "dark"
+        );
+
+
+    applyTheme(
+        initialTheme
+    );
+
+
+    buttons.forEach(
+        button => {
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    const selectedTheme =
+                        button.dataset.themeOption;
+
+
+                    applyTheme(
+                        selectedTheme
+                    );
+
+
+                    localStorage.setItem(
+                        "gg-theme",
+                        selectedTheme
+                    );
+
+                }
+            );
+
+        }
+    );
+
+
+    function applyTheme(theme) {
+
+        root.setAttribute(
+            "data-theme",
+            theme
+        );
+
+
+        buttons.forEach(
+            button => {
+
+                const active =
+                    button.dataset.themeOption ===
+                    theme;
+
+
+                button.classList.toggle(
+                    "active",
+                    active
+                );
+
+
+                button.setAttribute(
+                    "aria-pressed",
+                    active
+                        ? "true"
+                        : "false"
+                );
+
+            }
+        );
+
+    }
+
+}
 
 /* ============================================================
    02. SCROLL REVEAL

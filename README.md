@@ -6,17 +6,15 @@
 
 **DFIR • Incident Response • Evidence Preservation • Forensic Integrity**
 
-Projeto prático voltado à **coleta, preservação, integridade, documentação e rastreabilidade de evidências digitais** durante investigações e processos de resposta a incidentes de segurança.
+<a href="https://geovanniandrade.github.io/gg-chain-of-custody/">🌐 Acessar Projeto</a>
+&nbsp;&nbsp;•&nbsp;&nbsp;
+<a href="https://geovanniandrade.github.io/gg-chain-of-custody/docs/">📚 Knowledge Base</a>
+&nbsp;&nbsp;•&nbsp;&nbsp;
+<a href="https://geovanniandrade.github.io/gg-chain-of-custody/templates/chain-of-custody.html">📝 Chain of Custody Form</a>
 
-<br>
+<br><br>
 
-![Status](https://img.shields.io/badge/STATUS-EM%20DESENVOLVIMENTO-2563eb?style=for-the-badge)
-![DFIR](https://img.shields.io/badge/DFIR-Digital%20Forensics-0f172a?style=for-the-badge)
-![Blue Team](https://img.shields.io/badge/BLUE%20TEAM-Incident%20Response-0284c7?style=for-the-badge)
-
----
-
-### `PRESERVE • VERIFY • TRACE`
+**PRESERVE • VERIFY • TRACE**
 
 </div>
 

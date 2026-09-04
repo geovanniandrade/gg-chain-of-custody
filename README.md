@@ -4,7 +4,9 @@
 
 ## Digital Evidence & Chain of Custody
 
-**DFIR • Incident Response • Evidence Preservation • Forensic Integrity**
+**Open-source DFIR documentation & digital evidence management project**
+
+`DFIR` • `Incident Response` • `Evidence Preservation` • `Chain of Custody`
 
 <br>
 
@@ -14,7 +16,7 @@
 
 <br><br>
 
-`PRESERVE` &nbsp;•&nbsp; `VERIFY` &nbsp;•&nbsp; `TRACE`
+### `PRESERVE • VERIFY • TRACE`
 
 </div>
 

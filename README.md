@@ -6,17 +6,19 @@
 
 **DFIR • Incident Response • Evidence Preservation • Forensic Integrity**
 
-<a href="https://geovanniandrade.github.io/gg-chain-of-custody/">🌐 Acessar Projeto</a>
-&nbsp;&nbsp;•&nbsp;&nbsp;
-<a href="https://geovanniandrade.github.io/gg-chain-of-custody/docs/">📚 Knowledge Base</a>
-&nbsp;&nbsp;•&nbsp;&nbsp;
-<a href="https://geovanniandrade.github.io/gg-chain-of-custody/templates/chain-of-custody.html">📝 Chain of Custody Form</a>
+<br>
+
+[![Acessar Projeto](https://img.shields.io/badge/🌐_ACESSAR_PROJETO-2563EB?style=for-the-badge)](https://geovanniandrade.github.io/gg-chain-of-custody/)
+[![Knowledge Base](https://img.shields.io/badge/📚_KNOWLEDGE_BASE-0F766E?style=for-the-badge)](https://geovanniandrade.github.io/gg-chain-of-custody/docs/)
+[![Chain of Custody](https://img.shields.io/badge/📝_CHAIN_OF_CUSTODY-7C3AED?style=for-the-badge)](https://geovanniandrade.github.io/gg-chain-of-custody/templates/chain-of-custody.html)
 
 <br><br>
 
-**PRESERVE • VERIFY • TRACE**
+`PRESERVE` &nbsp;•&nbsp; `VERIFY` &nbsp;•&nbsp; `TRACE`
 
 </div>
+
+---
 
 # 🔎 Sobre o projeto
 

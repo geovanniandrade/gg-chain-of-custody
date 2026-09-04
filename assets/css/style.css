@@ -1773,7 +1773,103 @@ select:focus-visible {
         margin-left: 26px;
     }
 }
+/* ============================================================
+   21. JAVASCRIPT INTERACTIONS
+   ============================================================ */
 
+.gg-reveal {
+    opacity: 0;
+    transform: translateY(22px);
+
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+}
+
+.gg-reveal.gg-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* Active navigation */
+
+.navigation > a.active:not(.nav-button) {
+    color: #ffffff;
+}
+
+.navigation > a.active:not(.nav-button)::after {
+    width: 100%;
+}
+
+
+/* Header after scrolling */
+
+.header-scrolled {
+    background: rgba(5, 8, 13, 0.96);
+
+    box-shadow:
+        0 8px 30px rgba(0, 0, 0, 0.25);
+
+    border-bottom-color:
+        rgba(88, 166, 255, 0.22);
+}
+
+
+/* Subtle card entrance delays */
+
+.principle-card:nth-child(2),
+.feature-card:nth-child(2),
+.document-card:nth-child(2) {
+    transition-delay: 0.05s;
+}
+
+.principle-card:nth-child(3),
+.feature-card:nth-child(3),
+.document-card:nth-child(3) {
+    transition-delay: 0.1s;
+}
+
+.principle-card:nth-child(4),
+.feature-card:nth-child(4),
+.document-card:nth-child(4) {
+    transition-delay: 0.15s;
+}
+
+.feature-card:nth-child(5),
+.document-card:nth-child(5) {
+    transition-delay: 0.2s;
+}
+
+.feature-card:nth-child(6),
+.document-card:nth-child(6) {
+    transition-delay: 0.25s;
+}
+
+
+/* Reduced motion accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    .gg-reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+}
 
 /* ============================================================
    GG // DIGITAL FORENSICS

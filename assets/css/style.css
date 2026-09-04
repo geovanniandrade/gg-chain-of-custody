@@ -1870,7 +1870,466 @@ select:focus-visible {
     }
 
 }
+/* ============================================================
+   22. THEME SWITCH
+   GG // DIGITAL FORENSICS
+   ============================================================ */
 
+.theme-switch {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 3px;
+
+    border: 1px solid var(--border);
+    border-radius: 8px;
+
+    background: rgba(255, 255, 255, 0.025);
+
+    gap: 2px;
+}
+
+.theme-option {
+    min-height: 32px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 6px;
+
+    padding: 0 10px;
+
+    border: none;
+    border-radius: 5px;
+
+    background: transparent;
+
+    color: var(--text-muted);
+
+    cursor: pointer;
+
+    font-size: 0.68rem;
+    font-weight: 650;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.theme-option:hover {
+    color: var(--text);
+}
+
+.theme-option.active {
+    background: var(--bg-soft);
+    color: var(--blue-light);
+
+    box-shadow:
+        0 2px 10px rgba(0, 0, 0, 0.18);
+}
+
+
+/* ============================================================
+   LIGHT THEME
+   ============================================================ */
+
+html[data-theme="light"] {
+
+    --bg-primary: #f5f7fa;
+    --bg-secondary: #eef2f7;
+    --bg-tertiary: #e9eef5;
+    --bg-soft: #ffffff;
+
+    --panel: rgba(255, 255, 255, 0.9);
+    --panel-light: #ffffff;
+
+    --border: #d6dee8;
+    --border-light: #c3cfdd;
+
+    --blue: #2563eb;
+    --blue-light: #2563eb;
+    --cyan: #0891b2;
+    --green: #15803d;
+    --yellow: #a16207;
+
+    --text: #111827;
+    --text-secondary: #475569;
+    --text-muted: #64748b;
+
+    --shadow:
+        0 20px 55px rgba(15, 23, 42, 0.12);
+}
+
+
+/* BODY */
+
+html[data-theme="light"] body {
+    background: var(--bg-primary);
+    color: var(--text);
+}
+
+
+/* HEADER */
+
+html[data-theme="light"] .header {
+    background:
+        rgba(255, 255, 255, 0.88);
+
+    border-bottom-color:
+        rgba(37, 99, 235, 0.14);
+}
+
+html[data-theme="light"] .header-scrolled {
+    background:
+        rgba(255, 255, 255, 0.97);
+
+    box-shadow:
+        0 8px 30px rgba(15, 23, 42, 0.08);
+}
+
+
+/* BRAND */
+
+html[data-theme="light"] .brand-symbol {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(37, 99, 235, 0.12),
+            rgba(8, 145, 178, 0.04)
+        );
+
+    color: #1e40af;
+}
+
+html[data-theme="light"] .brand-text strong {
+    color: #172033;
+}
+
+
+/* NAVIGATION */
+
+html[data-theme="light"] .navigation > a:not(.nav-button) {
+    color: #526174;
+}
+
+html[data-theme="light"] .navigation > a:not(.nav-button):hover,
+html[data-theme="light"] .navigation > a.active:not(.nav-button) {
+    color: #111827;
+}
+
+
+/* THEME SWITCH */
+
+html[data-theme="light"] .theme-switch {
+    background: #edf2f7;
+    border-color: #d2dbe6;
+}
+
+html[data-theme="light"] .theme-option {
+    color: #64748b;
+}
+
+html[data-theme="light"] .theme-option.active {
+    background: #ffffff;
+    color: #1d4ed8;
+
+    box-shadow:
+        0 2px 8px rgba(15, 23, 42, 0.1);
+}
+
+
+/* HERO */
+
+html[data-theme="light"] .hero {
+    background:
+        radial-gradient(
+            circle at 75% 45%,
+            rgba(37, 99, 235, 0.10),
+            transparent 27%
+        ),
+        radial-gradient(
+            circle at 20% 10%,
+            rgba(8, 145, 178, 0.05),
+            transparent 25%
+        ),
+        #f5f7fa;
+}
+
+html[data-theme="light"] .hero-grid {
+    background-image:
+        linear-gradient(
+            rgba(37, 99, 235, 0.055) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(37, 99, 235, 0.055) 1px,
+            transparent 1px
+        );
+}
+
+html[data-theme="light"] .hero h1 {
+    color: #111827;
+}
+
+html[data-theme="light"] .hero-description {
+    color: #526174;
+}
+
+html[data-theme="light"] .classification {
+    background: rgba(37, 99, 235, 0.06);
+}
+
+
+/* SECONDARY BUTTON */
+
+html[data-theme="light"] .button-secondary {
+    background: #ffffff;
+
+    border-color: #ccd6e2;
+
+    color: #172033;
+}
+
+html[data-theme="light"] .button-secondary:hover {
+    background: #f8fafc;
+    border-color: #94a3b8;
+}
+
+
+/* TERMINAL
+   Continuará escuro mesmo no modo claro
+   para preservar a identidade DFIR.
+*/
+
+html[data-theme="light"] .hero-terminal {
+    background: #070b11;
+    border-color: #26374b;
+}
+
+html[data-theme="light"] .terminal-header {
+    background: #0b1119;
+}
+
+html[data-theme="light"] .terminal-body {
+    color: #bac8d6;
+}
+
+
+/* SECTIONS */
+
+html[data-theme="light"] .section {
+    background: #f5f7fa;
+}
+
+html[data-theme="light"] .section-dark {
+    background: #eaf0f6;
+}
+
+html[data-theme="light"] .section-soft {
+    background: #eef2f7;
+}
+
+html[data-theme="light"] .lead {
+    color: #243044;
+}
+
+
+/* PRINCIPLES */
+
+html[data-theme="light"] .principle-card {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(37, 99, 235, 0.025),
+            #ffffff
+        );
+}
+
+html[data-theme="light"] .principle-card:hover {
+    background: #f7faff;
+}
+
+html[data-theme="light"] .principle-card h3 {
+    color: #111827;
+}
+
+
+/* STATS */
+
+html[data-theme="light"] .stats {
+    background: #ffffff;
+}
+
+html[data-theme="light"] .stat-item strong {
+    color: #111827;
+}
+
+
+/* WORKFLOW */
+
+html[data-theme="light"] .workflow-icon {
+    background:
+        radial-gradient(
+            circle,
+            #ffffff,
+            #edf2f7
+        );
+
+    box-shadow:
+        0 0 0 8px #eaf0f6;
+}
+
+html[data-theme="light"] .workflow-content h3 {
+    color: #111827;
+}
+
+
+/* CODE CARD
+   Mantemos escuro por contraste.
+*/
+
+html[data-theme="light"] .code-card {
+    background: #070b11;
+}
+
+html[data-theme="light"] .code-header {
+    background: #0a1018;
+}
+
+html[data-theme="light"] .code-card code {
+    color: #b9d7f5;
+}
+
+
+/* FEATURES */
+
+html[data-theme="light"] .feature-card {
+    background: #ffffff;
+
+    border-color: #d6dee8;
+
+    box-shadow:
+        0 8px 28px rgba(15, 23, 42, 0.05);
+}
+
+html[data-theme="light"] .feature-card:hover {
+    background: #f9fbfd;
+
+    border-color: #9bbce4;
+}
+
+html[data-theme="light"] .feature-card h3 {
+    color: #111827;
+}
+
+
+/* DOCUMENTATION */
+
+html[data-theme="light"] .document-card {
+    background: #ffffff;
+
+    border-color: #d6dee8;
+
+    box-shadow:
+        0 5px 20px rgba(15, 23, 42, 0.04);
+}
+
+html[data-theme="light"] .document-card:hover {
+    background: #f8fbff;
+}
+
+html[data-theme="light"] .document-card.highlighted {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(37, 99, 235, 0.10),
+            #ffffff
+        );
+}
+
+html[data-theme="light"] .document-card h3 {
+    color: #111827;
+}
+
+html[data-theme="light"] .document-icon {
+    background: #edf3fa;
+}
+
+
+/* STANDARDS */
+
+html[data-theme="light"] .standards-list strong {
+    color: #243044;
+}
+
+
+/* CTA */
+
+html[data-theme="light"] .cta {
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(37, 99, 235, 0.10),
+            transparent 40%
+        ),
+        #eef3f8;
+}
+
+
+/* FOOTER */
+
+html[data-theme="light"] .footer {
+    background: #e8eef5;
+}
+
+html[data-theme="light"] .footer-content strong {
+    color: #172033;
+}
+
+html[data-theme="light"] .footer-bottom {
+    border-top-color: #cbd5e1;
+}
+
+
+/* SCROLLBAR */
+
+html[data-theme="light"] ::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+
+html[data-theme="light"] ::-webkit-scrollbar-thumb {
+    background: #b6c2cf;
+    border-color: #f1f5f9;
+}
+
+
+/* ============================================================
+   MOBILE THEME SWITCH
+   ============================================================ */
+
+@media (max-width: 1000px) {
+
+    .theme-switch {
+        margin-left: auto;
+    }
+
+}
+
+@media (max-width: 700px) {
+
+    .theme-option span {
+        display: none;
+    }
+
+    .theme-option {
+        width: 34px;
+        padding: 0;
+    }
+
+}
 /* ============================================================
    GG // DIGITAL FORENSICS
    PRESERVE. VERIFY. TRACE.

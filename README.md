@@ -1,581 +1,1752 @@
-<div align="center">
-
-# 🛡️ GG // DIGITAL FORENSICS
-
-## Digital Evidence & Chain of Custody
-
-**DFIR • Incident Response • Evidence Preservation • Forensic Integrity**
-
-Projeto prático voltado à **coleta, preservação, integridade, documentação e rastreabilidade de evidências digitais** durante investigações e processos de resposta a incidentes de segurança.
-
-<br>
-
-![Status](https://img.shields.io/badge/STATUS-EM%20DESENVOLVIMENTO-2563eb?style=for-the-badge)
-![DFIR](https://img.shields.io/badge/DFIR-Digital%20Forensics-0f172a?style=for-the-badge)
-![Blue Team](https://img.shields.io/badge/BLUE%20TEAM-Incident%20Response-0284c7?style=for-the-badge)
-
----
-
-### `PRESERVE • VERIFY • TRACE`
+<!DOCTYPE html>
+<html lang="pt-BR">
 
-</div>
-
-# 🔎 Sobre o projeto
+<head>
 
-O **GG Digital Evidence & Chain of Custody** é um projeto acadêmico e prático desenvolvido com foco em **Digital Forensics & Incident Response (DFIR)**.
+    <meta charset="UTF-8">
 
-A proposta é estabelecer um processo estruturado para a coleta de artefatos digitais suspeitos e manutenção de sua **cadeia de custódia**, possibilitando registrar todo o ciclo de vida de uma evidência desde sua identificação até o armazenamento ou encerramento do caso.
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-Além da documentação técnica, o projeto possui uma **interface web própria**, desenvolvida para facilitar o preenchimento, visualização e impressão de registros de cadeia de custódia.
-
-O projeto busca simular uma abordagem aplicável a ambientes corporativos de:
-
-- SOC;
-- CSIRT;
-- Blue Team;
-- DFIR;
-- resposta a incidentes;
-- investigação forense digital.
+    <meta name="description"
+          content="GG Digital Forensics - Digital Evidence & Chain of Custody. Projeto de DFIR, preservação, integridade e rastreabilidade de evidências digitais.">
 
----
+    <meta name="author"
+          content="Geovanni Andrade">
 
-# 🎯 Objetivo
+    <title>GG Digital Forensics | Chain of Custody</title>
 
-Criar um processo reutilizável para cenários de investigação de incidentes envolvendo **arquivos maliciosos, artefatos suspeitos e outras evidências digitais**.
+    <link rel="stylesheet"
+          href="assets/css/style.css">
 
-O processo busca garantir cinco princípios fundamentais:
+</head>
 
-| Pilar | Objetivo |
-|---|---|
-| 🔍 **Identificação** | Registrar claramente a evidência e sua origem |
-| 🔐 **Integridade** | Demonstrar que a evidência não sofreu alterações |
-| 🔗 **Rastreabilidade** | Registrar todo o histórico de posse e transferência |
-| 📦 **Preservação** | Proteger o artefato durante todo o processo |
-| 📝 **Documentação** | Permitir auditoria e reconstrução das ações realizadas |
 
----
+<body>
 
-# 🔄 Ciclo de Vida da Evidência
 
-O fluxo adotado pelo projeto considera as principais etapas de tratamento de uma evidência digital.
+<!-- =========================================================
+     HEADER
+========================================================== -->
 
-```text
-┌─────────────────────────┐
-│        INCIDENTE        │
-└────────────┬────────────┘
-             │
-             ▼
-┌─────────────────────────┐
-│      IDENTIFICAÇÃO      │
-└────────────┬────────────┘
-             │
-             ▼
-┌─────────────────────────┐
-│         COLETA          │
-└────────────┬────────────┘
-             │
-             ▼
-┌─────────────────────────┐
-│   HASH / INTEGRIDADE    │
-└────────────┬────────────┘
-             │
-             ▼
-┌─────────────────────────┐
-│      PRESERVAÇÃO        │
-└────────────┬────────────┘
-             │
-             ▼
-┌─────────────────────────┐
-│  REGISTRO DE CUSTÓDIA   │
-└────────────┬────────────┘
-             │
-             ▼
-┌─────────────────────────┐
-│      TRANSFERÊNCIA      │
-└────────────┬────────────┘
-             │
-             ▼
-┌─────────────────────────┐
-│     ANÁLISE FORENSE     │
-└────────────┬────────────┘
-             │
-             ▼
-┌─────────────────────────┐
-│      ARMAZENAMENTO      │
-│             /           │
-│       ENCERRAMENTO      │
-└─────────────────────────┘
-```
+<header class="header">
 
----
+    <div class="container header-content">
 
-# 🧪 Processo de Coleta
 
-## 01 — Identificação do incidente
+        <a href="index.html"
+           class="brand">
 
-A primeira etapa consiste no registro inicial do evento de segurança e na criação de um identificador único para permitir sua rastreabilidade.
+            <div class="brand-symbol">
+                GG
+            </div>
 
-Exemplo:
 
-```text
-INC-2026-001
-```
+            <div class="brand-text">
 
-O registro poderá conter informações como:
+                <strong>
+                    GG // DIGITAL FORENSICS
+                </strong>
 
-- identificador do incidente;
-- data da ocorrência;
-- horário;
-- responsável pela coleta;
-- departamento;
-- classificação do incidente.
+                <span>
+                    Evidence & Incident Response
+                </span>
 
----
+            </div>
 
-## 02 — Identificação do ativo
+        </a>
 
-Após identificar o incidente, devem ser registradas informações sobre o equipamento ou sistema onde a evidência foi localizada.
 
-Exemplos:
 
-```text
-Hostname
-Endereço IPv4
-Endereço MAC
-Sistema Operacional
-Versão / Build
-Usuário ativo
-Número de série
-Localização física
-```
+        <nav class="navigation">
 
-Essas informações ajudam a estabelecer a **origem técnica da evidência**.
+            <a href="#overview">
+                Overview
+            </a>
 
----
+            <a href="#workflow">
+                Workflow
+            </a>
 
-## 03 — Identificação da evidência
+            <a href="#features">
+                Recursos
+            </a>
 
-O artefato localizado deve ser documentado antes de qualquer movimentação ou análise.
+            <a href="#documentation">
+                Documentação
+            </a>
 
-Informações importantes incluem:
 
-```text
-Nome do arquivo
-Caminho original
-Tamanho em bytes
-Data de criação
-Última modificação
-Último acesso
-Tipo de artefato
-```
+            <a href="templates/chain-of-custody.html"
+               class="nav-button">
 
-Exemplo:
+                Abrir Formulário
 
-```text
-C:\Windows\Temp\suspicious_payload.exe
-```
+            </a>
 
----
+        </nav>
 
-## 04 — Verificação de integridade
+    </div>
 
-Antes da transferência ou manipulação da evidência, deve ser calculado um **hash criptográfico**.
+</header>
 
-O projeto utiliza principalmente **SHA-256** como mecanismo de verificação de integridade.
 
-Exemplo utilizando PowerShell:
 
-```powershell
-Get-FileHash -Path "C:\Evidence\suspicious.exe" -Algorithm SHA256
-```
+<main>
 
-Também pode ser registrado o hash MD5 para fins complementares:
 
-```powershell
-Get-FileHash -Path "C:\Evidence\suspicious.exe" -Algorithm MD5
-```
+<!-- =========================================================
+     HERO
+========================================================== -->
 
-O hash funciona como uma **impressão digital matemática do arquivo**.
+<section class="hero">
 
-Caso o conteúdo da evidência seja alterado, o valor calculado será diferente, permitindo identificar uma possível modificação.
+    <div class="hero-grid"></div>
 
----
 
-## 05 — Coleta de metadados
+    <div class="container hero-content">
 
-Informações adicionais do arquivo também podem ser coletadas para auxiliar a investigação.
 
-Exemplo em PowerShell:
+        <div class="hero-left">
 
-```powershell
-Get-ItemProperty -Path "C:\Evidence\suspicious.exe" |
-    Select-Object FullName,
-                  Length,
-                  CreationTimeUtc,
-                  LastWriteTimeUtc,
-                  LastAccessTimeUtc |
-    Format-List
-```
 
-Esses dados ajudam a registrar características temporais importantes para uma análise forense.
+            <div class="classification">
 
----
+                <span class="classification-dot"></span>
 
-## 06 — Preservação da evidência
+                DIGITAL FORENSICS & INCIDENT RESPONSE
 
-Após a coleta, a evidência deve ser protegida contra alterações ou execução acidental.
+            </div>
 
-Entre as medidas recomendadas estão:
 
-- armazenamento controlado;
-- restrição de acesso;
-- verificação de hashes;
-- registro dos responsáveis;
-- utilização de mídia destinada à coleta;
-- acondicionamento seguro;
-- criptografia do contêiner;
-- documentação de qualquer transferência.
+            <h1>
 
-Quando necessário, uma amostra pode ser acondicionada em um contêiner criptografado.
+                Digital Evidence
 
-Exemplo:
+                <span>
+                    & Chain of Custody
+                </span>
 
-```text
-evidence_INC-2026-001.7z
-```
+            </h1>
 
----
 
-# 🔐 Integridade Criptográfica
+            <p class="hero-description">
 
-O projeto registra dois valores principais:
+                Processo estruturado para identificação, coleta,
+                preservação, verificação de integridade e
+                rastreabilidade de evidências digitais.
 
-### SHA-256
+            </p>
 
-```text
-SHA-256
-64 caracteres hexadecimais
-```
 
-Utilizado como principal mecanismo de verificação de integridade.
+            <div class="hero-actions">
 
-### MD5
 
-```text
-MD5
-32 caracteres hexadecimais
-```
+                <a href="templates/chain-of-custody.html"
+                   class="button button-primary">
 
-Pode ser utilizado como identificador complementar durante processos de triagem e correlação.
+                    Criar Registro de Evidência
 
-O valor de hash deve ser registrado **antes e depois das etapas relevantes de transferência ou armazenamento**, permitindo verificar que a evidência permaneceu íntegra.
+                </a>
 
----
 
-# 🔗 Cadeia de Custódia
+                <a href="docs/?doc=coleta-evidencias"
+                   class="button button-secondary">
 
-A cadeia de custódia representa o histórico documentado da evidência.
+                    Explorar Documentação
 
-Toda alteração de posse física ou lógica deve possuir um registro contendo, no mínimo:
+                </a>
 
-```text
-Data
-Hora
-Responsável pela entrega
-Responsável pelo recebimento
-Finalidade da transferência
-Local de armazenamento
-Validação / assinatura
-```
+            </div>
 
-Exemplo:
 
-| Nº | Data / Hora | Entregue por | Recebido por | Finalidade |
-|---:|---|---|---|---|
-| 01 | 03/09/2026 - 14:30 | Analista DFIR | Analista DFIR | Coleta inicial |
-| 02 | 03/09/2026 - 16:10 | Analista DFIR | Analista Forense | Análise |
-| 03 | 04/09/2026 - 09:00 | Analista Forense | Responsável pela Custódia | Armazenamento |
 
-> Os dados acima são apenas exemplos fictícios utilizados para demonstração.
+            <div class="hero-tags">
 
----
+                <span>
+                    DFIR
+                </span>
 
-# 📝 GG Chain of Custody Form
+                <span>
+                    Incident Response
+                </span>
 
-O projeto possui um documento próprio para registro de cadeia de custódia.
+                <span>
+                    Blue Team
+                </span>
 
-O formulário permite registrar:
+                <span>
+                    Evidence Handling
+                </span>
 
-- ID do incidente;
-- ID da evidência;
-- data e hora da coleta;
-- responsável pela coleta;
-- informações do ativo;
-- informações do artefato;
-- hash SHA-256;
-- hash MD5;
-- armazenamento;
-- acondicionamento;
-- histórico de transferências;
-- responsáveis;
-- assinaturas;
-- encerramento da custódia.
+            </div>
 
-O documento foi desenvolvido para ser preenchido diretamente pelo navegador.
 
-```text
-templates/chain-of-custody.html
-```
+        </div>
 
----
 
-# 🖨️ Documento Imprimível
 
-Uma das propostas do projeto é permitir que o registro seja utilizado tanto digitalmente quanto como documento formal.
+        <!-- TERMINAL -->
 
-A versão web será preparada para:
+        <div class="hero-terminal">
 
-- preenchimento no navegador;
-- impressão em papel;
-- formato A4;
-- exportação utilizando impressão para PDF;
-- layout corporativo;
-- assinatura manual;
-- arquivamento do registro.
 
-Isso permite utilizar a interface web como ferramenta de apoio e gerar posteriormente um documento estático para armazenamento.
+            <div class="terminal-header">
 
----
 
-# 🌐 Interface Web
+                <div class="terminal-dots">
 
-O projeto também inclui uma interface própria:
+                    <span></span>
+                    <span></span>
+                    <span></span>
 
-```text
-GG // DIGITAL FORENSICS
-Digital Evidence & Chain of Custody
-```
+                </div>
 
-A interface será responsável por centralizar o processo de documentação.
 
-### Recursos
+                <span>
+                    evidence-control.log
+                </span>
 
-- Dashboard DFIR;
-- visualização do ciclo de vida da evidência;
-- criação de registro;
-- formulário de cadeia de custódia;
-- documentação técnica;
-- guia de preenchimento;
-- exemplo de incidente;
-- impressão;
-- geração de PDF pelo navegador.
+            </div>
 
----
 
-# 🧭 Fluxo Operacional
 
-```text
-INCIDENT DETECTED
-        │
-        ▼
-IDENTIFY EVIDENCE
-        │
-        ▼
-REGISTER SOURCE
-        │
-        ▼
-CALCULATE HASH
-        │
-        ▼
-COLLECT ARTIFACT
-        │
-        ▼
-PRESERVE EVIDENCE
-        │
-        ▼
-REGISTER CUSTODY
-        │
-        ▼
-FORENSIC ANALYSIS
-        │
-        ▼
-ARCHIVE / CLOSE
-```
+            <div class="terminal-body">
 
----
 
-# 📂 Estrutura do Projeto
+                <p>
 
-```text
-gg-chain-of-custody/
-│
-├── assets/
-│   │
-│   ├── css/
-│   │   └── style.css
-│   │
-│   ├── img/
-│   │   └── gg-logo.svg
-│   │
-│   └── js/
-│       └── app.js
-│
-├── docs/
-│   │
-│   ├── cadeia-de-custodia.md
-│   ├── coleta-evidencias.md
-│   ├── exemplo-caso.md
-│   ├── guia-preenchimento.md
-│   └── referencias.md
-│
-├── templates/
-│   └── chain-of-custody.html
-│
-├── README.md
-└── index.html
-```
+                    <span class="terminal-muted">
+                        $
+                    </span>
 
----
+                    gg-dfir --status
 
-# 📚 Documentação
+                </p>
 
-O repositório foi dividido em documentos específicos para facilitar a consulta.
 
-| Documento | Finalidade |
-|---|---|
-| `coleta-evidencias.md` | Processo técnico de coleta de evidências |
-| `cadeia-de-custodia.md` | Conceitos e processo de cadeia de custódia |
-| `guia-preenchimento.md` | Instruções de utilização do formulário |
-| `exemplo-caso.md` | Simulação prática de um incidente |
-| `referencias.md` | Referências técnicas, normativas e legais |
+                <p>
 
----
+                    <span class="terminal-label">
+                        SYSTEM
+                    </span>
 
-# 🛠️ Tecnologias utilizadas
+                    GG Digital Evidence Control
 
-<div align="center">
+                </p>
 
-![HTML5](https://img.shields.io/badge/HTML5-Web%20Interface-E34F26?style=flat-square&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-Interface-1572B6?style=flat-square&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-Application-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
-![PowerShell](https://img.shields.io/badge/PowerShell-DFIR-5391FE?style=flat-square&logo=powershell&logoColor=white)
 
-</div>
+                <p>
 
----
+                    <span class="terminal-label">
+                        CASE
+                    </span>
 
-# 🛡️ Áreas relacionadas
+                    INC-2026-001
 
-O projeto possui relação direta com diferentes áreas de Segurança da Informação:
+                </p>
 
-```text
-Digital Forensics
-DFIR
-Incident Response
-CSIRT
-SOC
-Blue Team
-Evidence Preservation
-Malware Triage
-Forensic Integrity
-Security Operations
-```
 
----
+                <p>
 
-# ⚖️ Referências Técnicas e Legais
+                    <span class="terminal-label">
+                        EVIDENCE
+                    </span>
 
-O desenvolvimento considera conceitos relacionados a:
+                    EVD-001
 
-### ISO/IEC 27037
+                </p>
 
-Diretrizes relacionadas à:
 
-- identificação;
-- coleta;
-- aquisição;
-- preservação de evidências digitais.
+                <p>
 
-### Cadeia de Custódia
+                    <span class="terminal-label">
+                        INTEGRITY
+                    </span>
 
-O projeto também considera os princípios de rastreabilidade da cadeia de custódia previstos nos:
+                    SHA-256 VERIFIED
 
-```text
-Artigos 158-A a 158-F
-Código de Processo Penal Brasileiro
-```
+                </p>
 
-Além de práticas utilizadas em processos de:
 
-- Digital Forensics;
-- Incident Response;
-- Evidence Handling;
-- preservação de integridade;
-- documentação de incidentes.
+                <p>
 
----
+                    <span class="terminal-label">
+                        CUSTODY
+                    </span>
 
-# 🧪 Ambiente de Laboratório
+                    ACTIVE
 
-Todos os exemplos apresentados neste projeto são desenvolvidos em ambiente:
+                </p>
 
-```text
-LABORATÓRIO
-CONTROLADO
-AUTORIZADO
-FICTÍCIO
-```
 
-Nenhuma amostra real de malware é disponibilizada neste repositório.
+                <div class="terminal-divider"></div>
 
-O foco do projeto está na **documentação, preservação e rastreabilidade da evidência**, e não na distribuição ou execução de código malicioso.
 
----
+                <p class="terminal-success">
 
-# ⚠️ Disclaimer
+                    ✓ Evidence integrity validated
 
-Este projeto foi desenvolvido para **fins acadêmicos, educacionais, profissionais e de laboratório**.
+                </p>
 
-Os nomes de empresas, usuários, equipamentos, endereços, hashes, incidentes e evidências utilizados nos exemplos podem ser fictícios ou anonimizados.
 
-O conteúdo não deve substituir procedimentos oficiais estabelecidos por autoridades competentes, políticas internas, requisitos jurídicos ou orientação de profissionais especializados.
+                <p class="terminal-cursor">
+                    _
+                </p>
 
----
 
-# 🚀 Roadmap
+            </div>
 
-- [x] Criação do repositório
-- [x] Estrutura inicial do projeto
-- [x] Documentação base
-- [x] Identidade GG Digital Forensics
-- [ ] Desenvolvimento da interface web
-- [ ] Desenvolvimento do formulário interativo
-- [ ] Layout de impressão A4
-- [ ] Exportação para PDF
-- [ ] Caso prático completo
-- [ ] Publicação via GitHub Pages
-- [ ] Finalização da documentação
 
----
+        </div>
 
-# 👨‍💻 Autor
 
-<div align="center">
+    </div>
 
-## Geovanni Andrade
+</section>
 
-**TI • Infraestrutura • Cybersecurity**
 
-**Blue Team • SOC • Incident Response • DFIR**
 
-[![GitHub](https://img.shields.io/badge/GitHub-geovanniandrade-181717?style=for-the-badge&logo=github)](https://github.com/geovanniandrade)
+<!-- =========================================================
+     OVERVIEW
+========================================================== -->
 
----
+<section class="section"
+         id="overview">
 
-## GG // DIGITAL FORENSICS
 
-### `PRESERVE. VERIFY. TRACE.`
+    <div class="container">
 
-**Digital Evidence & Chain of Custody**
 
-</div>
+        <div class="section-heading">
+
+
+            <span class="section-number">
+                01
+            </span>
+
+
+            <div>
+
+                <span class="section-eyebrow">
+                    PROJECT OVERVIEW
+                </span>
+
+                <h2>
+                    Preservação de evidências digitais
+                </h2>
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="overview-grid">
+
+
+            <div class="overview-content">
+
+
+                <p class="lead">
+
+                    O <strong>GG Digital Evidence & Chain of Custody</strong>
+                    é um projeto desenvolvido para documentar o ciclo de
+                    vida de uma evidência digital durante um processo
+                    de investigação e resposta a incidentes.
+
+                </p>
+
+
+                <p>
+
+                    A solução reúne documentação técnica e uma interface
+                    web para registrar informações relacionadas à origem,
+                    integridade, armazenamento e transferência de
+                    artefatos digitais.
+
+                </p>
+
+
+                <p>
+
+                    O objetivo é permitir que cada etapa realizada sobre
+                    uma evidência possa ser posteriormente identificada,
+                    validada e reconstruída.
+
+                </p>
+
+
+            </div>
+
+
+
+            <div class="principles-grid">
+
+
+                <div class="principle-card">
+
+                    <span class="principle-number">
+                        01
+                    </span>
+
+                    <h3>
+                        Identificação
+                    </h3>
+
+                    <p>
+
+                        Registro da origem, ativo, incidente e
+                        características da evidência.
+
+                    </p>
+
+                </div>
+
+
+
+                <div class="principle-card">
+
+                    <span class="principle-number">
+                        02
+                    </span>
+
+                    <h3>
+                        Integridade
+                    </h3>
+
+                    <p>
+
+                        Verificação criptográfica utilizando hashes
+                        para detectar alterações.
+
+                    </p>
+
+                </div>
+
+
+
+                <div class="principle-card">
+
+                    <span class="principle-number">
+                        03
+                    </span>
+
+                    <h3>
+                        Preservação
+                    </h3>
+
+                    <p>
+
+                        Proteção da evidência contra alteração,
+                        execução ou acesso não autorizado.
+
+                    </p>
+
+                </div>
+
+
+
+                <div class="principle-card">
+
+                    <span class="principle-number">
+                        04
+                    </span>
+
+                    <h3>
+                        Rastreabilidade
+                    </h3>
+
+                    <p>
+
+                        Registro cronológico de cada mudança
+                        de custódia.
+
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     STATS
+========================================================== -->
+
+<section class="stats">
+
+
+    <div class="container stats-grid">
+
+
+        <div class="stat-item">
+
+            <strong>
+                SHA-256
+            </strong>
+
+            <span>
+                Verificação de Integridade
+            </span>
+
+        </div>
+
+
+        <div class="stat-item">
+
+            <strong>
+                DFIR
+            </strong>
+
+            <span>
+                Digital Forensics
+            </span>
+
+        </div>
+
+
+        <div class="stat-item">
+
+            <strong>
+                CoC
+            </strong>
+
+            <span>
+                Chain of Custody
+            </span>
+
+        </div>
+
+
+        <div class="stat-item">
+
+            <strong>
+                A4
+            </strong>
+
+            <span>
+                Documento Imprimível
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     WORKFLOW
+========================================================== -->
+
+<section class="section section-dark"
+         id="workflow">
+
+
+    <div class="container">
+
+
+        <div class="section-heading">
+
+
+            <span class="section-number">
+                02
+            </span>
+
+
+            <div>
+
+                <span class="section-eyebrow">
+                    EVIDENCE LIFECYCLE
+                </span>
+
+                <h2>
+                    Fluxo operacional
+                </h2>
+
+            </div>
+
+
+        </div>
+
+
+
+        <p class="section-intro">
+
+            Uma evidência deve possuir rastreabilidade desde o momento
+            em que é identificada até sua análise, armazenamento ou
+            encerramento.
+
+        </p>
+
+
+
+        <div class="workflow">
+
+
+            <!-- 01 -->
+
+            <div class="workflow-item">
+
+                <div class="workflow-icon">
+                    01
+                </div>
+
+                <div class="workflow-content">
+
+                    <span>
+                        DETECTION
+                    </span>
+
+                    <h3>
+                        Incidente
+                    </h3>
+
+                    <p>
+
+                        Identificação do evento de segurança e
+                        abertura do caso.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="workflow-arrow">
+                ↓
+            </div>
+
+
+
+            <!-- 02 -->
+
+            <div class="workflow-item">
+
+                <div class="workflow-icon">
+                    02
+                </div>
+
+                <div class="workflow-content">
+
+                    <span>
+                        IDENTIFICATION
+                    </span>
+
+                    <h3>
+                        Evidência
+                    </h3>
+
+                    <p>
+
+                        Registro da origem, ativo e artefato
+                        identificado.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="workflow-arrow">
+                ↓
+            </div>
+
+
+
+            <!-- 03 -->
+
+            <div class="workflow-item">
+
+                <div class="workflow-icon">
+                    03
+                </div>
+
+                <div class="workflow-content">
+
+                    <span>
+                        COLLECTION
+                    </span>
+
+                    <h3>
+                        Coleta
+                    </h3>
+
+                    <p>
+
+                        Aquisição controlada da evidência e
+                        seus metadados.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="workflow-arrow">
+                ↓
+            </div>
+
+
+
+            <!-- 04 -->
+
+            <div class="workflow-item">
+
+                <div class="workflow-icon">
+                    04
+                </div>
+
+                <div class="workflow-content">
+
+                    <span>
+                        INTEGRITY
+                    </span>
+
+                    <h3>
+                        Hash
+                    </h3>
+
+                    <p>
+
+                        Cálculo de assinatura criptográfica
+                        para validação de integridade.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="workflow-arrow">
+                ↓
+            </div>
+
+
+
+            <!-- 05 -->
+
+            <div class="workflow-item">
+
+                <div class="workflow-icon">
+                    05
+                </div>
+
+                <div class="workflow-content">
+
+                    <span>
+                        PRESERVATION
+                    </span>
+
+                    <h3>
+                        Preservação
+                    </h3>
+
+                    <p>
+
+                        Proteção contra modificação, exclusão
+                        ou execução acidental.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="workflow-arrow">
+                ↓
+            </div>
+
+
+
+            <!-- 06 -->
+
+            <div class="workflow-item">
+
+                <div class="workflow-icon">
+                    06
+                </div>
+
+                <div class="workflow-content">
+
+                    <span>
+                        CUSTODY
+                    </span>
+
+                    <h3>
+                        Custódia
+                    </h3>
+
+                    <p>
+
+                        Registro formal dos responsáveis
+                        pela posse da evidência.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="workflow-arrow">
+                ↓
+            </div>
+
+
+
+            <!-- 07 -->
+
+            <div class="workflow-item">
+
+                <div class="workflow-icon">
+                    07
+                </div>
+
+                <div class="workflow-content">
+
+                    <span>
+                        FORENSICS
+                    </span>
+
+                    <h3>
+                        Análise
+                    </h3>
+
+                    <p>
+
+                        Investigação realizada em ambiente
+                        apropriado e controlado.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="workflow-arrow">
+                ↓
+            </div>
+
+
+
+            <!-- 08 -->
+
+            <div class="workflow-item">
+
+                <div class="workflow-icon">
+                    08
+                </div>
+
+                <div class="workflow-content">
+
+                    <span>
+                        ARCHIVE
+                    </span>
+
+                    <h3>
+                        Encerramento
+                    </h3>
+
+                    <p>
+
+                        Armazenamento, retenção ou descarte
+                        documentado.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     HASH
+========================================================== -->
+
+<section class="section">
+
+
+    <div class="container">
+
+
+        <div class="section-heading">
+
+
+            <span class="section-number">
+                03
+            </span>
+
+
+            <div>
+
+                <span class="section-eyebrow">
+                    INTEGRITY CONTROL
+                </span>
+
+                <h2>
+                    Verificação criptográfica
+                </h2>
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="hash-grid">
+
+
+            <div class="hash-description">
+
+
+                <p class="lead">
+
+                    O hash criptográfico permite verificar se uma
+                    evidência digital sofreu alterações durante
+                    seu ciclo de custódia.
+
+                </p>
+
+
+                <p>
+
+                    O projeto utiliza principalmente SHA-256 para
+                    registrar e posteriormente validar a integridade
+                    dos artefatos coletados.
+
+                </p>
+
+
+            </div>
+
+
+
+            <div class="code-card">
+
+
+                <div class="code-header">
+
+                    <span>
+                        PowerShell
+                    </span>
+
+                    <span class="code-status">
+                        DFIR
+                    </span>
+
+                </div>
+
+
+                <pre><code>Get-FileHash `
+-Path "C:\Evidence\suspicious.exe" `
+-Algorithm SHA256</code></pre>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     FEATURES
+========================================================== -->
+
+<section class="section section-soft"
+         id="features">
+
+
+    <div class="container">
+
+
+        <div class="section-heading">
+
+
+            <span class="section-number">
+                04
+            </span>
+
+
+            <div>
+
+                <span class="section-eyebrow">
+                    PLATFORM
+                </span>
+
+                <h2>
+                    Recursos do projeto
+                </h2>
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="feature-grid">
+
+
+            <article class="feature-card">
+
+                <div class="feature-top">
+
+                    <span class="feature-id">
+                        GG-01
+                    </span>
+
+                    <span class="feature-type">
+                        EVIDENCE
+                    </span>
+
+                </div>
+
+                <h3>
+                    Registro de Evidências
+                </h3>
+
+                <p>
+
+                    Formulário dedicado para registrar origem,
+                    ativo, características e identificação
+                    da evidência.
+
+                </p>
+
+            </article>
+
+
+
+            <article class="feature-card">
+
+                <div class="feature-top">
+
+                    <span class="feature-id">
+                        GG-02
+                    </span>
+
+                    <span class="feature-type">
+                        HASH
+                    </span>
+
+                </div>
+
+                <h3>
+                    Controle de Integridade
+                </h3>
+
+                <p>
+
+                    Registro de hashes criptográficos para
+                    validação da integridade da evidência.
+
+                </p>
+
+            </article>
+
+
+
+            <article class="feature-card">
+
+                <div class="feature-top">
+
+                    <span class="feature-id">
+                        GG-03
+                    </span>
+
+                    <span class="feature-type">
+                        CUSTODY
+                    </span>
+
+                </div>
+
+                <h3>
+                    Histórico de Custódia
+                </h3>
+
+                <p>
+
+                    Controle cronológico de entrega,
+                    recebimento e finalidade de cada
+                    transferência.
+
+                </p>
+
+            </article>
+
+
+
+            <article class="feature-card">
+
+                <div class="feature-top">
+
+                    <span class="feature-id">
+                        GG-04
+                    </span>
+
+                    <span class="feature-type">
+                        REPORT
+                    </span>
+
+                </div>
+
+                <h3>
+                    Documento A4
+                </h3>
+
+                <p>
+
+                    Formulário preparado para impressão,
+                    assinatura e geração de PDF pelo navegador.
+
+                </p>
+
+            </article>
+
+
+
+            <article class="feature-card">
+
+                <div class="feature-top">
+
+                    <span class="feature-id">
+                        GG-05
+                    </span>
+
+                    <span class="feature-type">
+                        GUIDE
+                    </span>
+
+                </div>
+
+                <h3>
+                    Guia Técnico
+                </h3>
+
+                <p>
+
+                    Documentação para orientar o processo
+                    de coleta e preenchimento dos registros.
+
+                </p>
+
+            </article>
+
+
+
+            <article class="feature-card">
+
+                <div class="feature-top">
+
+                    <span class="feature-id">
+                        GG-06
+                    </span>
+
+                    <span class="feature-type">
+                        LAB
+                    </span>
+
+                </div>
+
+                <h3>
+                    Caso Prático
+                </h3>
+
+                <p>
+
+                    Exemplo fictício demonstrando a utilização
+                    do processo durante um incidente.
+
+                </p>
+
+            </article>
+
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     DOCUMENTATION / KNOWLEDGE BASE
+========================================================== -->
+
+<section class="section"
+         id="documentation">
+
+
+    <div class="container">
+
+
+        <div class="section-heading">
+
+
+            <span class="section-number">
+                05
+            </span>
+
+
+            <div>
+
+                <span class="section-eyebrow">
+                    GG KNOWLEDGE BASE
+                </span>
+
+                <h2>
+                    Documentação técnica
+                </h2>
+
+            </div>
+
+
+        </div>
+
+
+
+        <p class="section-intro">
+
+            Consulte os procedimentos, conceitos, guias,
+            simulações e referências utilizadas no projeto
+            através da Knowledge Base GG.
+
+        </p>
+
+
+
+        <div class="documents-grid">
+
+
+            <!-- COLETA -->
+
+            <a href="docs/?doc=coleta-evidencias"
+               class="document-card">
+
+
+                <span class="document-icon">
+                    01
+                </span>
+
+
+                <div>
+
+                    <small>
+                        PROCEDURE
+                    </small>
+
+                    <h3>
+                        Coleta de Evidências
+                    </h3>
+
+                    <p>
+                        Identificação, coleta, metadados e preservação.
+                    </p>
+
+                </div>
+
+
+                <span class="document-arrow">
+                    →
+                </span>
+
+
+            </a>
+
+
+
+            <!-- CUSTÓDIA -->
+
+            <a href="docs/?doc=cadeia-de-custodia"
+               class="document-card">
+
+
+                <span class="document-icon">
+                    02
+                </span>
+
+
+                <div>
+
+                    <small>
+                        CHAIN OF CUSTODY
+                    </small>
+
+                    <h3>
+                        Cadeia de Custódia
+                    </h3>
+
+                    <p>
+                        Rastreabilidade, posse e transferência de evidências.
+                    </p>
+
+                </div>
+
+
+                <span class="document-arrow">
+                    →
+                </span>
+
+
+            </a>
+
+
+
+            <!-- GUIA -->
+
+            <a href="docs/?doc=guia-preenchimento"
+               class="document-card">
+
+
+                <span class="document-icon">
+                    03
+                </span>
+
+
+                <div>
+
+                    <small>
+                        USER GUIDE
+                    </small>
+
+                    <h3>
+                        Guia de Preenchimento
+                    </h3>
+
+                    <p>
+                        Manual completo para utilização do formulário GG.
+                    </p>
+
+                </div>
+
+
+                <span class="document-arrow">
+                    →
+                </span>
+
+
+            </a>
+
+
+
+            <!-- CASO -->
+
+            <a href="docs/?doc=exemplo-caso"
+               class="document-card">
+
+
+                <span class="document-icon">
+                    04
+                </span>
+
+
+                <div>
+
+                    <small>
+                        PRACTICAL CASE
+                    </small>
+
+                    <h3>
+                        Caso Prático DFIR
+                    </h3>
+
+                    <p>
+                        Simulação completa de incidente e tratamento da evidência.
+                    </p>
+
+                </div>
+
+
+                <span class="document-arrow">
+                    →
+                </span>
+
+
+            </a>
+
+
+
+            <!-- REFERÊNCIAS -->
+
+            <a href="docs/?doc=referencias"
+               class="document-card">
+
+
+                <span class="document-icon">
+                    05
+                </span>
+
+
+                <div>
+
+                    <small>
+                        REFERENCES
+                    </small>
+
+                    <h3>
+                        Referências Técnicas
+                    </h3>
+
+                    <p>
+                        Normas, legislação, NIST e documentação técnica.
+                    </p>
+
+                </div>
+
+
+                <span class="document-arrow">
+                    →
+                </span>
+
+
+            </a>
+
+
+
+            <!-- FORM -->
+
+            <a href="templates/chain-of-custody.html"
+               class="document-card highlighted">
+
+
+                <span class="document-icon">
+                    GG
+                </span>
+
+
+                <div>
+
+                    <small>
+                        INTERACTIVE FORM
+                    </small>
+
+                    <h3>
+                        Chain of Custody Form
+                    </h3>
+
+                    <p>
+                        Criar, preencher e imprimir um registro de evidência.
+                    </p>
+
+                </div>
+
+
+                <span class="document-arrow">
+                    →
+                </span>
+
+
+            </a>
+
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     STANDARDS
+========================================================== -->
+
+<section class="section section-dark">
+
+
+    <div class="container">
+
+
+        <div class="standards">
+
+
+            <div>
+
+
+                <span class="section-eyebrow">
+                    GOVERNANCE & FORENSICS
+                </span>
+
+
+                <h2>
+                    Referências do projeto
+                </h2>
+
+
+                <p>
+
+                    A documentação considera conceitos relacionados
+                    à identificação, coleta, aquisição, preservação
+                    e rastreabilidade de evidências digitais.
+
+                </p>
+
+
+            </div>
+
+
+
+            <div class="standards-list">
+
+
+                <div>
+
+                    <strong>
+                        ISO/IEC 27037
+                    </strong>
+
+                    <span>
+                        Digital Evidence Guidelines
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        NIST SP 800-86
+                    </strong>
+
+                    <span>
+                        Forensics & Incident Response
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        Chain of Custody
+                    </strong>
+
+                    <span>
+                        Evidence Traceability
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        CPP
+                    </strong>
+
+                    <span>
+                        Arts. 158-A a 158-F
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     CTA
+========================================================== -->
+
+<section class="cta">
+
+
+    <div class="container cta-content">
+
+
+        <span class="cta-label">
+            GG // DIGITAL FORENSICS
+        </span>
+
+
+        <h2>
+            Inicie um registro de evidência
+        </h2>
+
+
+        <p>
+
+            Utilize o formulário web para documentar
+            uma cadeia de custódia digital de forma
+            organizada e pronta para impressão.
+
+        </p>
+
+
+        <a href="templates/chain-of-custody.html"
+           class="button button-primary button-large">
+
+            Abrir Chain of Custody
+
+        </a>
+
+
+    </div>
+
+
+</section>
+
+
+</main>
+
+
+
+<!-- =========================================================
+     FOOTER
+========================================================== -->
+
+<footer class="footer">
+
+
+    <div class="container footer-content">
+
+
+        <div>
+
+
+            <div class="footer-logo">
+                GG
+            </div>
+
+
+            <strong>
+                GG // DIGITAL FORENSICS
+            </strong>
+
+
+            <p>
+                Digital Evidence & Chain of Custody
+            </p>
+
+
+        </div>
+
+
+
+        <div class="footer-middle">
+
+
+            <span>
+                PRESERVE
+            </span>
+
+
+            <span>
+                VERIFY
+            </span>
+
+
+            <span>
+                TRACE
+            </span>
+
+
+        </div>
+
+
+
+        <div class="footer-author">
+
+
+            <span>
+                Developed by
+            </span>
+
+
+            <a href="https://github.com/geovanniandrade"
+               target="_blank"
+               rel="noopener noreferrer">
+
+                Geovanni Andrade
+
+            </a>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="footer-bottom">
+
+
+        <div class="container">
+
+
+            <span>
+                Academic & Laboratory Project
+            </span>
+
+
+            <span>
+                GG Digital Forensics © 2026
+            </span>
+
+
+        </div>
+
+
+    </div>
+
+
+</footer>
+
+
+
+<script src="assets/js/app.js"></script>
+
+
+</body>
+
+</html>
